@@ -48,7 +48,7 @@ describe('manual calculations test', function() {
       expect(22/2).to.equal(11);
     });
     it('multiply number error', function() {
-        expect(1/1).to.not.equal(100);
+        expect(1/1).to.not.equal(101);
     });
   });
 });
