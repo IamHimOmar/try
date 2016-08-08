@@ -22,7 +22,7 @@
   "scripts": {
     "test" : "npm run bank && npm run calculator",
     "bank": "cd test/bank && mocha bank.js",
-    "calculator" : "cd ../calculator && mocha calculator.js"
+    "calculator" : "cd test/calculator && mocha calculator.js"
   },
   "author": "",
   "license": "ISC"
