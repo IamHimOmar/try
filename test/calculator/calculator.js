@@ -3,7 +3,7 @@ var expect  = require('chai').expect;
 // var superagent = require('superagent');
 var assert = require('assert');
 var request = require('request');
-var calculator = require('../src/api/calculator.js')
+var calculator = require('../../src/api/calculator.js')
 
 
 describe('calculator tests', function() {
