@@ -1,0 +1,24 @@
+#Sidebar{
+  width: 150px;
+  position: absolute;
+  top: 250px;
+  left: 0;
+}
+
+.options{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.options li{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid blue;
+  margin: 0px 2px;
+}
+
+/*// IMBORTANT*/
+#IMbortant{
+  font-size: 5em;
+  text-align: center;
+}

@@ -1,0 +1,25 @@
+<!-- <sidebar></sidebar>  TODOO-->
+<link rel="stylesheet" href="assets/css/bank.css" media="screen" title="no title" charset="utf-8">
+<div id="History" ng-controller="BankController">
+    <table>
+      <tr class="headerRow">
+        <td>Name</td>
+        <td>Card ID</td>
+        <td>Description</td>
+        <td>Balance</td>
+        <td>Date</td>
+      </tr>
+      <tr ng-repeat="trans in history">
+        <td>{{trans.name}}</td>
+        <td>{{trans.card_id}}</td>
+        <td>{{trans.description}}</td>
+        <td>{{trans.balance_at}}</td>
+        <td>{{trans.transaction_date}}</td>
+      </tr>
+    </table>
+    <div class="buttons-wrap">
+      <button type="button" name="button">next</button>
+      <button type="button" name="button">previous</button>
+    </div>
+</div>
+<sidebar></sidebar>

@@ -1,0 +1,20 @@
+.headerRow > td{
+  text-align: center;
+  padding: 5px;
+  background: #0f5ffe;
+}
+#History  table{
+  /*position: relative;*/
+  margin: 0 auto;
+  border-collapse: collapse;;
+}
+table tr,td{
+  border: 1px solid black;
+}
+table{
+  table-layout: fixed;
+}
+.buttons-wrap{
+  width: 30%;
+  margin: 0 auto;
+}
