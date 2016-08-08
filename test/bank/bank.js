@@ -75,6 +75,8 @@ describe('test http requests', function() {
               res.should.have.status(200);
               res.should.be.json;
               res.body.length.should.equal(0);
+              res.body.should.be.array;
+              // res.body[0].should.be.null;
               done();
             })
       });
@@ -100,19 +102,20 @@ describe('test http requests', function() {
             done();
           })
       });
-      it('Check balance', done => {
-        chai.request(server)
-          .post("/checkBalance")
-          .send({'id':54})
-          .end(function(req,res,err){
-            // req.body.id.should.equal(54);
-            res.should.have.status(200);
-            res.should.be.json;
-            res.body[0].balance.should.not.be.a("null");
-            res.body[0].balance.should.equal("0");
-            done();
-          })
-      });
+      // it('Check balance', done => {
+      //   chai.request(server)
+      //     .post("/checkBalance")
+      //     .send({'id':54})
+      //     .end(function(req,res,err){
+      //       // req.body.id.should.equal(54);
+      //       res.should.have.status(200);
+      //       res.should.be.json;
+      //       res.body[0].balance.should.not.be.a("null");
+      //       res.body[0].should.have.property('balance');
+      //       res.body[0].balance.should.equal("0");
+      //       done();
+      //     })
+      // });
       it('Deposite', done => {
         var money;
         chai.request(server)
@@ -168,16 +171,30 @@ describe('test http requests', function() {
               .post("/Transfer")
               .send({'value':200,'idSender':55,'idReceiver':54})
               .end(function(err,res){
-                chai.request(server)
-                  .post("/checkBalance")
-                  .send({'id':55})
-                  .end(function(err,res){
-                    res.should.have.status(200);
-                    res.should.be.json;
-                    res.body[0].balance.should.equal((parseInt(moneySender.toString()) - 200).toString());
-                    done();
-                  })
-              })
-          })
+                    chai.request(server)
+                      .post("/getHistory")
+                      .send({'id':55})
+                      .end(function(err,res){
+                        res.should.have.status(200);
+                        res.should.be.json;
+                        res.body.length.should.equal(2);
+                        res.body.should.be.array;
+                        res.body[0].should.have.property('card_id');
+                        res.body[0].should.have.property('name');
+                        res.body[0].should.have.property('transaction_date');
+                        res.body[0].should.have.property('description');
+                        res.body[0].should.have.property('balance_at');
+                        chai.request(server)
+                          .post("/checkBalance")
+                          .send({'id':55})
+                          .end(function(err,res){
+                            res.should.have.status(200);
+                            res.should.be.json;
+                            res.body[0].balance.should.equal('-200');
+                            done();
+                          });
+                  });
+              });
+          });
       });
 });
